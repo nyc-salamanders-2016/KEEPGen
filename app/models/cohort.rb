@@ -4,4 +4,5 @@ class Cohort < ApplicationRecord
 
   has_many  :admins_cohorts
   has_many  :admins, through: :admins_cohorts
+  has_many :students
 end

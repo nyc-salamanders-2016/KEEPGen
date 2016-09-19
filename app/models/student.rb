@@ -8,4 +8,5 @@ class Student < ApplicationRecord
   belongs_to :team
   has_many :ranks
   has_many :votes, foreign_key: "voter_id"
+  belongs_to :cohort
 end
