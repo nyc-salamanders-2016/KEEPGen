@@ -5,4 +5,6 @@ class Student < ApplicationRecord
   validates   :cohort_id,   { presence: true }
 
   has_many  :pitches, foreign_key: "pitcher_id"
+  belongs_to :team
+  has_many :ranks
 end

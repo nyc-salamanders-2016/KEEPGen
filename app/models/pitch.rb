@@ -5,4 +5,6 @@ class Pitch < ApplicationRecord
   validates :summary,     { presence: true }
 
   belongs_to  :pitcher, class_name: "Student"
+  belongs_to  :team
+  has_many :ranks
 end
