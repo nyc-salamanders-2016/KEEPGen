@@ -11,10 +11,11 @@ class AdminDashboard extends React.Component {
 
   componentDidMount(){
     $.ajax({
-      url: '/pitches'
+      url: '/pitches',
       method: 'GET'
-    }).done((resonse)=>{
-      this.setState({pitches: response})
+    }).done((response)=>{
+    
+      this.setState({pitches: response.pitches})
     })
   }
 
@@ -51,6 +52,7 @@ class AdminDashboard extends React.Component {
   render() {
     return(
       <div>
+        <h2>Add new Cohort</h2>
         <form onSubmit={this.handleSubmit}>
           <p>
             <label >DBC cohort Name:</label><br/>

@@ -51,8 +51,7 @@ ActiveRecord::Schema.define(version: 20160919214021) do
   end
 
   create_table "pitches", force: :cascade do |t|
-    t.integer  "pitcher_id", null: false
-    t.integer  "team_id",    null: false
+    t.integer  "pitcher_id"
     t.string   "title",      null: false
     t.text     "summary",    null: false
     t.datetime "created_at", null: false
@@ -72,7 +71,6 @@ ActiveRecord::Schema.define(version: 20160919214021) do
     t.string   "email",                                  null: false
     t.string   "password",                               null: false
     t.integer  "cohort_id",                              null: false
-    t.integer  "team_id"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "encrypted_password",     default: "",    null: false

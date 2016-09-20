@@ -1,10 +1,12 @@
 class AdminPitch extends React.Component {
   render() {
-    reutrn(
-      <li>
-      {this.props.data.title}
-      <li>{this.props.data.summary}</li>
-      </li>
+    
+    return(
+      <div>
+        <li>{this.props.data.title}</li>
+        <p>{this.props.data.summary}</p>
+
+      </div>
     )
   }
 }
