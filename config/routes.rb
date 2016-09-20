@@ -12,10 +12,15 @@ Rails.application.routes.draw do
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy'
 
+<<<<<<< a50c5214d7b931635a68a063e8966d327f0fef8f
 >>>>>>> deleted all of devise and recreated users
   get '/students/:id', to: 'students#show'
   get '/admins', to: 'admins#show'
+=======
+  get '/students' => 'students#show'
+  get '/instructors' => 'instructors#show'
+>>>>>>> user stuff works, routes to view depending on who logs in instructor/student
 
 end

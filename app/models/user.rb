@@ -8,4 +8,12 @@ class User < ApplicationRecord
   has_many :pitches, foreign_key: "pitcher_id"
   has_many :ranks
   has_many :votes, foreign_key: "voter_id"
+
+  # def dashboard
+  #   if self.status == "Instructor"
+  #     redirect_to '/instructors'
+  #   else
+  #     redirect_to '/students'
+  #   end
+  # end
 end
