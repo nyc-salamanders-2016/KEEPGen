@@ -2,10 +2,20 @@ class AdminDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formSubmitted: false
+      formSubmitted: false,
+      pitches: []
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.messageAfterSubmit = this.messageAfterSubmit.bind(this)
+  }
+
+  componentDidMount(){
+    $.ajax({
+      url: '/pitches'
+      method: 'GET'
+    }).done((resonse)=>{
+      this.setState({pitches: response})
+    })
   }
 
   handleSubmit(event) {
@@ -61,6 +71,7 @@ class AdminDashboard extends React.Component {
           <input type="submit" value="Create New Cohort" />
         </form>
         {this.messageAfterSubmit()}
+        <AdminPitchList data={this.state.pitches} />
       </div>
     )
   }
