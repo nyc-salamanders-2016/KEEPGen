@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160919194012) do
 
   create_table "pitches", force: :cascade do |t|
     t.integer  "pitcher_id", null: false
+    t.integer  "team_id"
     t.string   "title",      null: false
     t.text     "summary",    null: false
     t.datetime "created_at", null: false
