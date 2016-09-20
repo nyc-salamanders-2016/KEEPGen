@@ -1,26 +1,67 @@
 class AdminDashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = {
+      formSubmitted: false
+    }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.messageAfterSubmit = this.messageAfterSubmit.bind(this)
   }
 
   handleSubmit(event) {
+    event.preventDefault()
+    $.ajax({
+      url: '/cohorts',
+      method: 'POST',
+      data: { cohort: {
+        name: this.refs.name.value,
+        year: this.refs.year.value,
+        maxPitches: this.refs.maxPitches.value,
+        maxVotes: this.refs.votes.value
+        }
+      }
+    })
+    .done((response)=>{
+      this.refs.name.value = ""
+      this.refs.year.value = ""
+      this.refs.maxPitches.value = ""
+      this.refs.votes.value = ""
+      this.setState({
+        formSubmitted: true
+      })
+    })
+  }
 
+  messageAfterSubmit() {
+    if(this.state.formSubmitted){
+      return( <p>You have created a new Cohort.</p>)
+    }
   }
 
   render() {
     return(
-      <form onSubmit={this.handleSubmit}>
-        <input placeholder="DBC Cohort Name" type="text" /><br></br>
-
-        <label for="maxPitches">Max # of Pitches per Student:</label>
-        <input type="number" name="maxPitches" max="5" /><br></br>
-
-        <label for="roundVotes">How many pitches can a student vote for in both of the rounds?</label><br></br>
-        <input type="number" name="roundVotes" /><br></br>
-
-        <input type="submit" value="Create New Cohort" />
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <p>
+            <label >DBC cohort Name:</label><br/>
+            <input type="text" ref="name"/>
+          </p>
+          <p>
+            <label >DBC cohort Year:</label><br/>
+            <input type="text" ref="year"/>
+          </p>
+          <p>
+            <label >Max # of Pitches per Student:</label><br/>
+            <input type="number" name="maxPitches" max="5" ref="maxPitches"/>
+          </p>
+          <p>
+            <label >How many pitches can a student vote for?</label><br/>
+            <input type="number" name="roundVotes" ref="votes"/>
+          </p>
+          <input type="submit" value="Create New Cohort" />
+        </form>
+        {this.messageAfterSubmit()}
+      </div>
     )
   }
 }

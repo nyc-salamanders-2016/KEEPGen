@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20160919214021) do
   create_table "cohorts", force: :cascade do |t|
     t.string   "name",       null: false
     t.string   "year",       null: false
+    t.integer  "maxPitches", null: false
+    t.integer  "maxVotes",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
