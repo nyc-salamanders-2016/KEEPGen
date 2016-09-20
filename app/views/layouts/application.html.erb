@@ -9,15 +9,15 @@
   </head>
 
   <body>
-    <% if student_signed_in? %>
+    <% if current_user %>
     <ul>
-      <li><%= link_to current_student.username, student_path(current_student) %></li>
-      <li><%= link_to "Sign out", destroy_student_session_path, :method => :delete %></li>
+      <li><%= link_to current_user.username, user_path(current_user) %></li>
+      <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
     </ul>
     <% else %>
     <ul>
-      <li><%= link_to "Sign In", new_student_session_path  %></li>
-      <li><%= link_to "Register", new_student_registration_path %></li>
+      <li><%= link_to "Sign In", login_path  %></li>
+      <li><%= link_to "Register", new_user_path %></li>
     </ul>
     <% end %>
     <%= yield %>
