@@ -15,7 +15,7 @@ class Student < ApplicationRecord
   belongs_to :cohort
 
   # these override existing devise methods so admin can approve students
-  def disapprove 
+  def disapprove
     self.approved = false
   end
   def approve
@@ -27,4 +27,10 @@ class Student < ApplicationRecord
   def inactive_message
     approved? ? super : "Your account has not been approved"
   end
+
+  # for mailer to let admin know to approve new student:
+  # after_create :send_admin_mail
+  # def send_admin_mail
+  #   AdminMailer.new_student_waiting_for_approval(self).deliver
+  # end
 end
