@@ -5,7 +5,7 @@ class CreateStudents < ActiveRecord::Migration[5.0]
       t.string    :email,       { null: false, unique: true }
       t.string    :password,    { null: false }
       t.integer   :cohort_id,   { null: false }
-      t.integer   :team_id       
+             
       t.timestamps(null: false)
     end
   end
