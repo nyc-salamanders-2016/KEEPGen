@@ -22,11 +22,18 @@ class StudentDashboard extends React.Component {
     this.setState({
       showPitches: true
     });
+    $.ajax({
+      url: '/pitches',
+      method: 'GET'
+    }).done((response)=>{
+      let pitches = response.pitches
+      this.setState({pitches})
+    })
   }
 
   updatePitches(pitch) {
    this.setState({
-     pitches: [pitch].concat(this.state.pitches)
+     pitches: this.state.pitches.concat([pitch])
    })
   }
 
@@ -34,7 +41,7 @@ class StudentDashboard extends React.Component {
     return(
       <div>
         <button onClick={this.showAllPitches}>Show All Pitces</button>
-        { this.state.showPitches ? <StudentPitchList pitches={this.state.pitches} /> : null }
+        { this.state.showPitches ? <StudentPitchList data={this.state.pitches} /> : null }
         <PitchMaker onUpdate={this.updatePitches} />
       </div>
     )

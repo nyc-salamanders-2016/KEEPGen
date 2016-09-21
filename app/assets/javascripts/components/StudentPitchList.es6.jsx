@@ -3,9 +3,8 @@ class StudentPitchList extends React.Component {
     return(
       <div>
         <h2>Vote On Pitches</h2>
-        {/* <form> */}
-          {this.props.pitches.map((pitch)=> {
-            return (<StudentPitch data={pitch} />)
+          {this.props.data.map((pitch, index)=> {
+            return (<StudentPitch key={index} data={pitch} />)
           })
         }
         {/* <button type='submit' value=''></button>

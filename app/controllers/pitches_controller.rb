@@ -7,6 +7,7 @@ class PitchesController < ApplicationController
 
   def create
     pitch = Pitch.new(pitch_params)
+    pitch.pitcher_id = current_user.id
     pitch.save
     render json: {pitch: pitch}
   end
