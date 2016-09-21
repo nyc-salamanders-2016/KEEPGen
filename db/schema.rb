@@ -25,12 +25,7 @@ ActiveRecord::Schema.define(version: 20160920211826) do
   end
 
   create_table "pitches", force: :cascade do |t|
-<<<<<<< a6fe0c811dc2db7b7e85884f2de2840fd8aed073
     t.integer  "pitcher_id"
-=======
-    t.integer  "pitcher_id", null: false
-    t.integer  "team_id"
->>>>>>> deleted all of devise and recreated users
     t.string   "title",      null: false
     t.text     "summary",    null: false
     t.datetime "created_at", null: false
@@ -45,31 +40,15 @@ ActiveRecord::Schema.define(version: 20160920211826) do
     t.datetime "updated_at",             null: false
   end
 
-<<<<<<< a6fe0c811dc2db7b7e85884f2de2840fd8aed073
   create_table "students", force: :cascade do |t|
-    t.string   "username",                               null: false
-    t.string   "email",                                  null: false
-    t.string   "password",                               null: false
-    t.integer  "cohort_id",                              null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.boolean  "approved",               default: false, null: false
-    t.index ["approved"], name: "index_students_on_approved", using: :btree
-    t.index ["email"], name: "index_students_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
+    t.string   "username",   null: false
+    t.string   "email",      null: false
+    t.string   "password",   null: false
+    t.integer  "cohort_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-=======
->>>>>>> deleted all of devise and recreated users
   create_table "teams", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false

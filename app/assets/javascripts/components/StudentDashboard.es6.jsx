@@ -5,6 +5,7 @@ class StudentDashboard extends React.Component {
       pitches: [],
       showPitches: false
     }
+    this.showAllPitches = this.showAllPitches.bind(this);
   }
 
   componentDidMount(){
@@ -26,7 +27,7 @@ class StudentDashboard extends React.Component {
     return(
       <div>
         <button onClick={this.showAllPitches}>Show All Pitces</button>
-        { this.state.showAllPitches ? <StudentAllPitches data={this.state.pitches} /> : null }
+        { this.state.showPitches ? <StudentPitchList data={this.state.pitches} /> : null }
       </div>
     )
   }
