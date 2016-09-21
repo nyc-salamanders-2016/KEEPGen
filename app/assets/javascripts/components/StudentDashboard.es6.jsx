@@ -6,6 +6,7 @@ class StudentDashboard extends React.Component {
       showPitches: false
     }
     this.showAllPitches = this.showAllPitches.bind(this);
+    this.updatePitches = this.updatePitches.bind(this);
   }
 
   componentDidMount(){
@@ -23,11 +24,18 @@ class StudentDashboard extends React.Component {
     });
   }
 
+  updatePitches(pitch) {
+   this.setState({
+     pitches: [pitch].concat(this.state.pitches)
+   })
+  }
+
   render() {
     return(
       <div>
         <button onClick={this.showAllPitches}>Show All Pitces</button>
-        { this.state.showPitches ? <StudentPitchList data={this.state.pitches} /> : null }
+        { this.state.showPitches ? <StudentPitchList pitches={this.state.pitches} /> : null }
+        <PitchMaker onUpdate={this.updatePitches} />
       </div>
     )
   }

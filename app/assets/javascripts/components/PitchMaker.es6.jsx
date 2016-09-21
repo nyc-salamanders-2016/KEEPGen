@@ -7,32 +7,20 @@ class PitchMaker extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
     $.ajax({
       url: '/pitches',
       method: 'post',
       data: {
-        title: this.refs.title.value,
-        summary: this.refs.summary.value
+        pitch: {
+          title: this.refs.title.value,
+          summary: this.refs.summary.value
+        }
       }
     })
     .done(function(response) {
-      debugger
-      this.refs.title.value = ""
-      this.refs.summary.value = ""
       this.props.onUpdate(response.pitch)
-      })
     }.bind(this))
   }
-
-  // updatePitches(pitch) {
-  //  this.setState({
-  //    pitches: this.state.pitches.concat([pitch])
-  //  })
-  // }
-
-  // <PitchMaker onUpdate={this.updatePitches} />
-
 
   render() {
     return(
