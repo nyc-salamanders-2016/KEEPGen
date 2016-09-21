@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :students, only: [:index]
   resources :cohorts, only: [:create]
   resources :pitches, only: [:index, :create]
-  resources :votes, only: [:create]
+  resources :votes, only: [:index, :create]
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
