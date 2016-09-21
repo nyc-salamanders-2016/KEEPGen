@@ -8,7 +8,7 @@
 
 admin = Admin.create!(username: 'admin', email: 'admin@yahoo.com', password: 'password')
 salamanders = Cohort.create!(name: 'salamanders', year: 2016)
-magoo = Student.create!(username: 'magoo', email: 'magoo@yahoo.com', password: 'password', cohort_id: 1)
+magoo = Student.create!(username: 'magoo', email: 'magoo@yahoo.com', encrypted_password: 'password', cohort_id: 1)
 mr = Student.create!(username: 'mr', email: 'mr@yahoo.com', password: 'password', cohort_id: 1)
 
 pitch1 = Pitch.create!(pitcher_id: mr.id, title: "idea", summary: "erases all errors")

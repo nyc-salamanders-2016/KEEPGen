@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20160919214021) do
   end
 
   create_table "pitches", force: :cascade do |t|
-    t.integer  "pitcher_id", null: false
     t.integer  "team_id"
     t.string   "title",      null: false
     t.text     "summary",    null: false
@@ -68,14 +67,6 @@ ActiveRecord::Schema.define(version: 20160919214021) do
   end
 
   create_table "students", force: :cascade do |t|
-<<<<<<< HEAD
-    t.string   "username",   null: false
-    t.string   "email",      null: false
-    t.string   "password",   null: false
-    t.integer  "cohort_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-=======
     t.string   "username",                               null: false
     t.string   "email",                                  null: false
     t.string   "password",                               null: false
@@ -96,7 +87,6 @@ ActiveRecord::Schema.define(version: 20160919214021) do
     t.index ["approved"], name: "index_students_on_approved", using: :btree
     t.index ["email"], name: "index_students_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
->>>>>>> 5a065e2aacb3004c19a778092595d777539d6e37
   end
 
   create_table "teams", force: :cascade do |t|
