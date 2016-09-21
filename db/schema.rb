@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160920211826) do
   end
 
   create_table "pitches", force: :cascade do |t|
+    t.integer  "team_id"
     t.integer  "pitcher_id"
     t.string   "title",      null: false
     t.text     "summary",    null: false

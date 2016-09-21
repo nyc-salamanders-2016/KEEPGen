@@ -4,7 +4,7 @@ class StudentPitchList extends React.Component {
       <div>
         <h2>Vote On Pitches</h2>
         {/* <form> */}
-          {this.props.data.pitches.map((pitch)=> {
+          {this.props.pitches.map((pitch)=> {
             return (<StudentPitch data={pitch} />)
           })
         }
