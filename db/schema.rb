@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 20160920211826) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "voter_id",   null: false
     t.integer  "pitch_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
