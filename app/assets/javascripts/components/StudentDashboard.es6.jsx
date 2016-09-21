@@ -2,8 +2,10 @@ class StudentDashboard extends React.Component {
   constructor() {
     super();
     this.state = {
-      pitches: []
+      pitches: [],
+      showPitches: false
     }
+    this.showAllPitches = this.showAllPitches.bind(this);
   }
 
   componentDidMount(){
@@ -11,17 +13,22 @@ class StudentDashboard extends React.Component {
       url: '/pitches',
       method: 'GET'
     }).done((response)=>{
-    
-      this.setState({pitches: response.pitches})
+      this.setState({pitches: response})
     })
   }
 
+  showAllPitches() {
+    this.setState({
+      showPitches: true
+    });
+  }
 
   render() {
     return(
-    <div>
-        <StudentPitchList data={this.state.pitches} />
-    </div>
-  )
+      <div>
+        <button onClick={this.showAllPitches}>Show All Pitces</button>
+        { this.state.showPitches ? <StudentPitchList data={this.state.pitches} /> : null }
+      </div>
+    )
   }
 }

@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :students
-  devise_for :admins
-  #ignore this route, devise needs a root to in order to work
   root to: 'welcome#index'
+  resources :users, only: [:show, :new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :admins, only: [:index]
   resources :pitches, only: [:index]
   resources :students, only: [:index]
   resources :cohorts, only: [:create]
   resources :votes, only: [:create]
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
+  get '/students/:id', to: 'students#show'
+  get '/students' => 'students#show'
+  get '/instructors' => 'instructors#show'
 end
