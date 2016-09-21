@@ -14,7 +14,7 @@ class StudentPitch extends React.Component {
         pitchId: this.refs.pitch_id.value
       }
     }).done((response)=>{
-      
+      this.props.updateCounter()
     })
   }
   render() {
