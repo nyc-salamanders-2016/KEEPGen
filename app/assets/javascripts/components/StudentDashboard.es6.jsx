@@ -3,10 +3,12 @@ class StudentDashboard extends React.Component {
     super();
     this.state = {
       pitches: [],
-      showPitches: false
+      showPitches: false,
+      counter: 0
     }
     this.showAllPitches = this.showAllPitches.bind(this);
     this.updatePitches = this.updatePitches.bind(this);
+    this.increaseCounter = this.increaseCounter.bind(this);
   }
 
   componentDidMount(){
@@ -31,10 +33,17 @@ class StudentDashboard extends React.Component {
     })
   }
 
+<<<<<<< e810bdfa26be754dae86edb6ceb03f092bdd41db
   updatePitches(pitch) {
    this.setState({
      pitches: this.state.pitches.concat([pitch])
    })
+=======
+  increaseCounter(){
+
+    var plusOne = this.state.counter + 1
+    this.setState({counter: plusOne })
+>>>>>>> enable student voting
   }
 
   render() {
@@ -43,6 +52,7 @@ class StudentDashboard extends React.Component {
         <button onClick={this.showAllPitches}>Show All Pitces</button>
         { this.state.showPitches ? <StudentPitchList data={this.state.pitches} /> : null }
         <PitchMaker onUpdate={this.updatePitches} />
+        { this.state.showPitches && this.state.counter < 7 ? <StudentPitchList data={this.state.pitches} updateCounter={this.increaseCounter}/> : null }
       </div>
     )
   }

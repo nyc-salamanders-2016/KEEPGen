@@ -3,7 +3,8 @@ class AdminDashboard extends React.Component {
     super(props);
     this.state = {
       formSubmitted: false,
-      pitches: []
+      pitches: [],
+      topVotes: []
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.messageAfterSubmit = this.messageAfterSubmit.bind(this)
@@ -14,8 +15,14 @@ class AdminDashboard extends React.Component {
       url: '/pitches',
       method: 'GET'
     }).done((response)=>{
-    
+
       this.setState({pitches: response.pitches})
+    })
+    $.ajax({
+      url: '/votes',
+      method: 'GET'
+    }).done((response)=>{
+      this.setState({topVotes: response.topPitches})
     })
   }
 
@@ -74,6 +81,7 @@ class AdminDashboard extends React.Component {
         </form>
         {this.messageAfterSubmit()}
         <AdminPitchList data={this.state.pitches} />
+        <AdminTopPitches data={this.state.topVotes} />
       </div>
     )
   }
