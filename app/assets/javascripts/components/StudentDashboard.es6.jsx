@@ -24,12 +24,19 @@ class StudentDashboard extends React.Component {
     this.setState({
       showPitches: true
     });
+    $.ajax({
+      url: '/pitches',
+      method: 'GET'
+    }).done((response)=>{
+      let pitches = response.pitches
+      this.setState({pitches})
+    })
   }
 
 <<<<<<< e810bdfa26be754dae86edb6ceb03f092bdd41db
   updatePitches(pitch) {
    this.setState({
-     pitches: [pitch].concat(this.state.pitches)
+     pitches: this.state.pitches.concat([pitch])
    })
 =======
   increaseCounter(){
@@ -43,12 +50,9 @@ class StudentDashboard extends React.Component {
     return(
       <div>
         <button onClick={this.showAllPitches}>Show All Pitces</button>
-<<<<<<< e810bdfa26be754dae86edb6ceb03f092bdd41db
-        { this.state.showPitches ? <StudentPitchList pitches={this.state.pitches} /> : null }
+        { this.state.showPitches ? <StudentPitchList data={this.state.pitches} /> : null }
         <PitchMaker onUpdate={this.updatePitches} />
-=======
         { this.state.showPitches && this.state.counter < 7 ? <StudentPitchList data={this.state.pitches} updateCounter={this.increaseCounter}/> : null }
->>>>>>> enable student voting
       </div>
     )
   }
