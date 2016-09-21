@@ -33,24 +33,21 @@ class StudentDashboard extends React.Component {
     })
   }
 
-<<<<<<< e810bdfa26be754dae86edb6ceb03f092bdd41db
   updatePitches(pitch) {
-   this.setState({
-     pitches: this.state.pitches.concat([pitch])
-   })
-=======
-  increaseCounter(){
+     this.setState({
+       pitches: this.state.pitches.concat([pitch])
+     })
+  }
 
+  increaseCounter() {
     var plusOne = this.state.counter + 1
     this.setState({counter: plusOne })
->>>>>>> enable student voting
   }
 
   render() {
     return(
       <div>
         <button onClick={this.showAllPitches}>Show All Pitces</button>
-        { this.state.showPitches ? <StudentPitchList data={this.state.pitches} /> : null }
         <PitchMaker onUpdate={this.updatePitches} />
         { this.state.showPitches && this.state.counter < 7 ? <StudentPitchList data={this.state.pitches} updateCounter={this.increaseCounter}/> : null }
       </div>
